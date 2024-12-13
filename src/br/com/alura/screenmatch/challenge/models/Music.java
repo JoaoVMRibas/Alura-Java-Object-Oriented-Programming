@@ -28,4 +28,13 @@ public class Music extends Audio{
     public void setGenre(String genre) {
         this.genre = genre;
     }
+
+    @Override
+    public int getRating() {
+        if(this.getPlaybackTotal() > 500){
+            return 10;
+        }else {
+            return 6;
+        }
+    }
 }
