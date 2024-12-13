@@ -1,6 +1,6 @@
-package br.com.alura.screenmatch.calculation;
+package br.com.alura.screenmatch.activities.calculation;
 
-import br.com.alura.screenmatch.models.AudiovisualContent;
+import br.com.alura.screenmatch.activities.models.AudiovisualContent;
 
 public class TimeCalculator {
     private int totalTime = 0;

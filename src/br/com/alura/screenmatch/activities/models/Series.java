@@ -1,4 +1,4 @@
-package br.com.alura.screenmatch.models;
+package br.com.alura.screenmatch.activities.models;
 
 public class Series extends AudiovisualContent{
     private int numberOfSeasons;
