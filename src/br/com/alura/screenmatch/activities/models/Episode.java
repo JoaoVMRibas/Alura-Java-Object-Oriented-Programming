@@ -1,6 +1,8 @@
 package br.com.alura.screenmatch.activities.models;
 
-public class Episode implements Rating  {
+import br.com.alura.screenmatch.activities.calculation.Rating;
+
+public class Episode implements Rating {
     private int number;
     private String name;
     private Series series;
