@@ -8,6 +8,11 @@ public class AudiovisualContent {
     private double sumOfRating;
     private int qtOfReviews;
 
+    public AudiovisualContent(String name, int yearOfRelease) {
+        this.name = name;
+        this.yearOfRelease = yearOfRelease;
+    }
+
     public void setName(String name) {
         this.name = name;
     }

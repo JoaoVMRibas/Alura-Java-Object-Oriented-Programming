@@ -8,36 +8,28 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        Movie topGun = new Movie();
-        topGun.setName("Top Gun - Maverick");
-        topGun.setYearOfRelease(2022);
+        Movie topGun = new Movie("Top Gun - Maverick",2022);
         topGun.setTotalDurationMinutes(131);
         topGun.setIncluded(true);
         topGun.addNewRating(8.7);
         topGun.addNewRating(6);
         topGun.addNewRating(9.5);
 
-        Movie avatar = new Movie();
-        avatar.setName("Avatar");
-        avatar.setYearOfRelease(2009);
+        Movie avatar = new Movie("Avatar",2009);
         avatar.setTotalDurationMinutes(162);
         avatar.setIncluded(true);
         avatar.addNewRating(8.6);
         avatar.addNewRating(8);
         avatar.addNewRating(9.1);
 
-        Movie avengers = new Movie();
-        avengers.setName("Vingadores: Ultimato");
-        avengers.setYearOfRelease(2019);
+        Movie avengers = new Movie("Vingadores: Ultimato",2019);
         avengers.setTotalDurationMinutes(181);
         avengers.setIncluded(true);
         avengers.addNewRating(8.7);
         avengers.addNewRating(9.2);
         avengers.addNewRating(9.5);
 
-        Series lost = new Series();
-        lost.setName("Lost");
-        lost.setYearOfRelease(2004);
+        Series lost = new Series("Lost",2004);
         lost.setIncluded(true);
         lost.setNumberOfSeasons(6);
         lost.setTotalNumberOfEpisodes(120);

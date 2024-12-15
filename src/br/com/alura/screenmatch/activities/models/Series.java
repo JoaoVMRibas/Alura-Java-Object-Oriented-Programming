@@ -6,6 +6,10 @@ public class Series extends AudiovisualContent{
     private boolean active;
     private int minutesPerEpisode;
 
+    public Series(String name, int yearOfRelease) {
+        super(name, yearOfRelease);
+    }
+
     public int getNumberOfSeasons() {
         return numberOfSeasons;
     }

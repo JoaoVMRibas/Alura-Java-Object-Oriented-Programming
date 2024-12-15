@@ -5,6 +5,10 @@ import br.com.alura.screenmatch.activities.calculation.Rating;
 public class Movie extends AudiovisualContent implements Rating {
     private String director;
 
+    public Movie(String name, int yearOfRelease) {
+        super(name, yearOfRelease);
+    }
+
     public String getDirector() {
         return director;
     }
