@@ -46,4 +46,9 @@ public class Series extends AudiovisualContent{
     public int getTotalDurationMinutes() {
         return totalNumberOfEpisodes * minutesPerEpisode;
     }
+
+    @Override
+    public String toString() {
+        return "Serie: " + this.getName() + " (" + this.getYearOfRelease() + ")";
+    }
 }

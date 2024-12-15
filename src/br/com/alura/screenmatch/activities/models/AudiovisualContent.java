@@ -1,6 +1,6 @@
 package br.com.alura.screenmatch.activities.models;
 
-public class AudiovisualContent {
+public class AudiovisualContent implements Comparable<AudiovisualContent>{
     private String name;
     private int yearOfRelease;
     private boolean included;
@@ -68,5 +68,10 @@ public class AudiovisualContent {
                 Duration: %d min.
                 """.formatted(name,yearOfRelease, included, (sumOfRating/ qtOfReviews), qtOfReviews, totalDurationMinutes);
         System.out.println(display);
+    }
+
+    @Override
+    public int compareTo(AudiovisualContent otherMovie) {
+        return this.getName().compareTo(otherMovie.getName());
     }
 }
