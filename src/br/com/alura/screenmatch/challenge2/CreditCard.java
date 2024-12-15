@@ -1,6 +1,7 @@
 package br.com.alura.screenmatch.challenge2;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CreditCard {
@@ -32,6 +33,7 @@ public class CreditCard {
         }else {
             this.balance -= product.getPrice();
             listPurchasedProducts.add(product);
+            Collections.sort(listPurchasedProducts);
             return true;
         }
     }

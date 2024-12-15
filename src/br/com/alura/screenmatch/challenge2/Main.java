@@ -34,6 +34,7 @@ public class Main {
         }while (condition != 0);
 
         System.out.println("*********************\n");
+
         for (Product product : card.getListPurchasedProducts()){
             System.out.println(product);
         }
