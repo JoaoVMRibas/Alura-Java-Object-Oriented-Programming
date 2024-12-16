@@ -1,6 +1,6 @@
-package br.com.alura.screenmatch.activities.models;
+package br.com.alura.screenmatch.models;
 
-import br.com.alura.screenmatch.activities.calculation.Rating;
+import br.com.alura.screenmatch.calculation.Rating;
 
 public class Movie extends AudiovisualContent implements Rating {
     private String director;

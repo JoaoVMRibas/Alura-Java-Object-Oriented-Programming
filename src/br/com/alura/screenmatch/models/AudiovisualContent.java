@@ -1,4 +1,4 @@
-package br.com.alura.screenmatch.activities.models;
+package br.com.alura.screenmatch.models;
 
 public class AudiovisualContent implements Comparable<AudiovisualContent>{
     private String name;

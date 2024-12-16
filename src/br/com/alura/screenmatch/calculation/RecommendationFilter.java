@@ -1,4 +1,4 @@
-package br.com.alura.screenmatch.activities.calculation;
+package br.com.alura.screenmatch.calculation;
 
 public class RecommendationFilter {
     public void isRecommended(Rating classifiable){

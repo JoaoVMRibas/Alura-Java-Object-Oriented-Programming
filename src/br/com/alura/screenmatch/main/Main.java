@@ -1,8 +1,8 @@
-package br.com.alura.screenmatch.activities.main;
+package br.com.alura.screenmatch.main;
 
-import br.com.alura.screenmatch.activities.models.AudiovisualContent;
-import br.com.alura.screenmatch.activities.models.Movie;
-import br.com.alura.screenmatch.activities.models.Series;
+import br.com.alura.screenmatch.models.AudiovisualContent;
+import br.com.alura.screenmatch.models.Movie;
+import br.com.alura.screenmatch.models.Series;
 
 import java.util.ArrayList;
 import java.util.Collections;
