@@ -4,6 +4,7 @@ out/
 !**/src/test/**/out/
 .idea/
 alura_java_object_oriented_programming.iml
+.properties
 
 ### Eclipse ###
 .apt_generated

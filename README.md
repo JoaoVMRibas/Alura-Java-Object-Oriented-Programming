@@ -1,3 +1,9 @@
 # Studying Java
 
-- Learn Java and OOP, the basis of the language
+- Java and OOP
+- Data structure: stack, queue, linked list, array
+- Data ordering: Comparable and Comparator
+- API consumption
+- HttpRequest
+- Read files
+- Error handling

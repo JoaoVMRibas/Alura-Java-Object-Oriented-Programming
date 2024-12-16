@@ -1,30 +1,37 @@
 package br.com.alura.screenmatch.main;
 
-import br.com.alura.screenmatch.models.AudiovisualContent;
-import br.com.alura.screenmatch.models.Movie;
-import br.com.alura.screenmatch.models.Series;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.Properties;
 
 public class Main {
     public static void main(String[] args) {
-        Movie topGun = new Movie("Top Gun - Maverick",2022);
-        Movie avatar = new Movie("Avatar",2009);
-        Movie avengers = new Movie("Vingadores: Ultimato",2019);
-        Series lost = new Series("Lost",2004);
+        Properties props =  new Properties();
+        String apiKey = "";
+        try{
+            FileInputStream file = new FileInputStream(".properties");
+            props.load(file);
+            apiKey = props.getProperty("API_KEY");
+        }catch (IOException e) {
+            System.err.println("Error loading configuration file: " + e.getMessage());
+        }
 
-        List<AudiovisualContent> listOfViewed = new ArrayList<>();
-        listOfViewed.add(topGun);
-        listOfViewed.add(avengers);
-        listOfViewed.add(avatar);
-        listOfViewed.add(lost);
+        try {
+            String uri = "https://www.omdbapi.com/?t=Matrix&apikey="+apiKey;
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(uri))
+                    .build();
+            HttpResponse<String> response = client
+                    .send(request, HttpResponse.BodyHandlers.ofString());
 
-        System.out.println("Ordered list:");
-        Collections.sort(listOfViewed);
-        for (AudiovisualContent item : listOfViewed) {
-            System.out.println(item);
+            System.out.println(response.body());
+        }catch (IOException | InterruptedException e){
+            System.out.println("Error sending request: " + e.getMessage());
         }
     }
 }
