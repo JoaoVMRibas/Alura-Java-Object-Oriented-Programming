@@ -13,6 +13,12 @@ public class AudiovisualContent implements Comparable<AudiovisualContent>{
         this.yearOfRelease = yearOfRelease;
     }
 
+    public AudiovisualContent(AudiovisualContentOmdb audioVisualOmdb) {
+        this.name = audioVisualOmdb.title();
+        this.yearOfRelease = Integer.parseInt(audioVisualOmdb.year());
+        this.totalDurationMinutes = Integer.parseInt(audioVisualOmdb.runtime().substring(0,3));
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -58,8 +64,14 @@ public class AudiovisualContent implements Comparable<AudiovisualContent>{
         return sumOfRating/ qtOfReviews;
     }
 
-    public void displaysTechnicalFeatures() {
-        String display = """
+    @Override
+    public int compareTo(AudiovisualContent otherMovie) {
+        return this.getName().compareTo(otherMovie.getName());
+    }
+
+    @Override
+    public String toString() {
+        return """
                 Name: %s.
                 Year of release: %d.
                 Is included: %b.
@@ -67,11 +79,5 @@ public class AudiovisualContent implements Comparable<AudiovisualContent>{
                 Number of reviews: %d.
                 Duration: %d min.
                 """.formatted(name,yearOfRelease, included, (sumOfRating/ qtOfReviews), qtOfReviews, totalDurationMinutes);
-        System.out.println(display);
-    }
-
-    @Override
-    public int compareTo(AudiovisualContent otherMovie) {
-        return this.getName().compareTo(otherMovie.getName());
     }
 }

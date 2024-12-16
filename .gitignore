@@ -5,6 +5,7 @@ out/
 .idea/
 alura_java_object_oriented_programming.iml
 .properties
+dependence/
 
 ### Eclipse ###
 .apt_generated
