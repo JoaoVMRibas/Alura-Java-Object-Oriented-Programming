@@ -31,8 +31,9 @@ public class Main {
         try {
             System.out.println("Enter a movie to search:");
             String movieName = scanner.nextLine();
-
+            movieName = movieName.replace(" ","+");
             String uri = String.format("https://www.omdbapi.com/?t=%s&apikey=%s",movieName, apiKey);
+
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(uri))
@@ -47,8 +48,13 @@ public class Main {
             AudiovisualContentOmdb audioVisualOmdb = gson.fromJson(json, AudiovisualContentOmdb.class);
             AudiovisualContent audioVisual = new AudiovisualContent(audioVisualOmdb);
             System.out.println(audioVisual);
-        }catch (IOException | InterruptedException e){
-            System.out.println("Error sending request: " + e.getMessage());
+
+        }catch (IOException | InterruptedException error){
+            System.out.println("Error sending request. Error message: " + error.getMessage());
+        }catch (NumberFormatException error) {
+            System.out.println("Number format error. Error message: " + error.getMessage());
+        }catch (IllegalArgumentException error) {
+            System.out.println("Error creating URI. Error message: " + error.getMessage());
         }
     }
 }
