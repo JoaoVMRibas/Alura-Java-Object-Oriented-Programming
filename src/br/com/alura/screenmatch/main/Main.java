@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -20,21 +21,25 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Properties props =  new Properties();
         String apiKey = "";
-        try{
-            FileInputStream file = new FileInputStream(".properties");
+        try(FileInputStream file = new FileInputStream(".properties")){
             props.load(file);
             apiKey = props.getProperty("API_KEY");
         }catch (IOException e) {
             System.err.println("Error loading configuration file: " + e.getMessage());
+            return;
         }
 
-        try {
+        if(apiKey.isEmpty()){
+            System.err.println("API Key is missing in the configuration.");
+            return;
+        }
+
+        try (HttpClient client = HttpClient.newHttpClient()){
             System.out.println("Enter a movie to search:");
             String movieName = scanner.nextLine();
             movieName = movieName.replace(" ","+");
             String uri = String.format("https://www.omdbapi.com/?t=%s&apikey=%s",movieName, apiKey);
 
-            HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(uri))
                     .build();
@@ -49,6 +54,9 @@ public class Main {
             AudiovisualContent audioVisual = new AudiovisualContent(audioVisualOmdb);
             System.out.println(audioVisual);
 
+            try(FileWriter writer = new FileWriter("Movies.txt")) {
+                writer.write(audioVisual.toString());
+            }
         }catch (IOException | InterruptedException error){
             System.out.println("Error sending request. Error message: " + error.getMessage());
         }catch (NumberFormatException error) {
