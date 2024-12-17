@@ -6,9 +6,11 @@ import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 
 public class MovieSearcher {
     private final Gson gson;
@@ -22,8 +24,8 @@ public class MovieSearcher {
 
     public AudiovisualContent searchAudioVisualContent(String audioVisualName){
         try(HttpClient client = HttpClient.newHttpClient()){
-            audioVisualName = audioVisualName.replace(" ","+");
-            String uri = String.format("https://www.omdbapi.com/?t=%s&apikey=%s",audioVisualName, this.apiKey);
+            String encodedName = URLEncoder.encode(audioVisualName, StandardCharsets.UTF_8);
+            String uri = String.format("https://www.omdbapi.com/?t=%s&apikey=%s",encodedName, this.apiKey);
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(uri))
                     .build();

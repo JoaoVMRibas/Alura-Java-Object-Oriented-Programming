@@ -18,7 +18,7 @@ public class Main {
         List<AudiovisualContent> audioVisualList = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         String movieName = "";
-        String apiKey = "";
+        String apiKey;
 
         Gson gson = new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
