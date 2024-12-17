@@ -16,7 +16,7 @@ public class AudiovisualContent implements Comparable<AudiovisualContent>{
     public AudiovisualContent(AudiovisualContentOmdb audioVisualOmdb) {
         this.name = audioVisualOmdb.title();
         this.yearOfRelease = Integer.parseInt(audioVisualOmdb.year());
-        this.totalDurationMinutes = Integer.parseInt(audioVisualOmdb.runtime().substring(0,3));
+        this.totalDurationMinutes = Integer.parseInt(audioVisualOmdb.runtime().substring(0,3).replace(" ",""));
     }
 
     public void setName(String name) {
@@ -72,12 +72,12 @@ public class AudiovisualContent implements Comparable<AudiovisualContent>{
     @Override
     public String toString() {
         return """
-                Name: %s.
-                Year of release: %d.
-                Is included: %b.
-                Rating: %.2f.
-                Number of reviews: %d.
-                Duration: %d min.
+                Name: %s
+                Year of release: %d
+                Is included: %b
+                Rating: %.2f
+                Number of reviews: %d
+                Duration: %d min
                 """.formatted(name,yearOfRelease, included, (sumOfRating/ qtOfReviews), qtOfReviews, totalDurationMinutes);
     }
 }
